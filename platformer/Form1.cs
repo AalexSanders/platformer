@@ -17,19 +17,19 @@ namespace platformer
         bool jumping = false;
         bool hasKey = false; // будет тру, если игрок ключ соберет
 
-        int jumpSpeed = 8; // скорость прыжка
+        int jumpSpeed = 7; // скорость прыжка
         int force = 5; // высота прыжка
         int score = 0;
 
-        int playSpeed = 15; //скорость движ
-        int backLeft = 7; //скорость окр среды
+        int playSpeed = 18; //скорость движ
+        int backLeft = 8; //скорость окр среды
 
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void mainGameTimer(object sender, EventArgs e)
+        private void MainGameTimer(object sender, EventArgs e)
         {
             player.Top += jumpSpeed;
 
@@ -68,7 +68,10 @@ namespace platformer
 
                 foreach (Control x in this.Controls)
                 {
-                    if (x is PictureBox && x.Tag == "platform" || x is PictureBox && x.Tag == "coin" || x is PictureBox && x.Tag == "door" || x is PictureBox && x.Tag == "key")
+                    if (x is PictureBox && x.Tag == "platform"
+                        || x is PictureBox && x.Tag == "coin"
+                        || x is PictureBox && x.Tag == "door"
+                        || x is PictureBox && x.Tag == "key")
                     {
                         x.Left -= backLeft;
                     }
@@ -82,7 +85,10 @@ namespace platformer
 
                 foreach (Control x in this.Controls)
                 {
-                    if (x is PictureBox && x.Tag == "platform" || x is PictureBox && x.Tag == "coin" || x is PictureBox && x.Tag == "door" || x is PictureBox && x.Tag == "key")
+                    if (x is PictureBox && x.Tag == "platform" 
+                        || x is PictureBox && x.Tag == "coin" 
+                        || x is PictureBox && x.Tag == "door" 
+                        || x is PictureBox && x.Tag == "key")
                     {
                         x.Left += backLeft;
                     }
@@ -114,7 +120,7 @@ namespace platformer
 
             if (player.Bounds.IntersectsWith(door.Bounds) && hasKey)
             {
-                //door.Image = Properties.Resources.door_open;
+                //door.Image = Properties.Resources.dooropen;
 
                 gameTimer.Stop();
                 MessageBox.Show("Ура победа!");
@@ -135,7 +141,7 @@ namespace platformer
             }
         }
 
-        private void keyisdown(object sender, KeyEventArgs e)
+        private void KeyIsDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Left)
             {
@@ -153,7 +159,7 @@ namespace platformer
             }
         }
 
-        private void keyisup(object sender, KeyEventArgs e)
+        private void KeyIsUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Left)
             {
@@ -169,6 +175,26 @@ namespace platformer
             {
                 jumping = false;
             }
+        }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void player_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox22_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
